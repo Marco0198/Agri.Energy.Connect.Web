@@ -1,0 +1,53 @@
+﻿@model List<Agri.Energy.Connect.Web.Models.Domain.Product>
+
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>All Products - Admin Functionality</h1>
+    </div>
+</div>
+
+
+<div class="container py-5">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Production Date </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Post in Model)
+                {
+                    <tr>
+                        <td>@Post.Id</td>
+                        <td>@Post.Name</td>
+                        <td>@Post.Category</td>
+                        <td>
+                          @Post.ProductionDate
+                        </td>
+                        <td>
+                            <a asp-area=""
+                               asp-controller="AdminProductPosts"
+                               asp-action="Edit"
+                               asp-route-id="@Post.Id">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Products Found!</p>
+    }
+
+</div>
